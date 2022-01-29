@@ -1,5 +1,5 @@
 nav {
-  background-color: #f3f3f3;
+  background-color: blueviolet;
 
   ul {
     width: 80%;
@@ -14,12 +14,12 @@ nav {
       a {
         text-decoration: none;
         display: inline-block;
-        color: #111;
+        color: #fff;
         letter-spacing: 0.1rem;
         font-weight: 600;
 
         &:hover {
-          color: #666;
+          color: #ccc;
         }
       }
     }

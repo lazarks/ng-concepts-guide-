@@ -1,1 +1,13 @@
 <p>comp1 works!</p>
+
+<div *ngIf="agentName">
+  {{ agentName }}
+</div>
+
+<hr />
+<hr />
+<button #validate (click)="rxjsEventObservable()">Click For Observable</button>
+<hr />
+<a href="#" #linkData (mouseover)="getEventObservable()"
+  >Click for LInk OBservable</a
+>
