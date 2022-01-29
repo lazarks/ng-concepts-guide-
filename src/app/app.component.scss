@@ -1,0 +1,27 @@
+nav {
+  background-color: #f3f3f3;
+
+  ul {
+    width: 80%;
+    margin: 0 auto;
+    display: flex;
+    justify-content: flex-start;
+
+    li {
+      list-style: none;
+      padding: 1rem;
+
+      a {
+        text-decoration: none;
+        display: inline-block;
+        color: #111;
+        letter-spacing: 0.1rem;
+        font-weight: 600;
+
+        &:hover {
+          color: #666;
+        }
+      }
+    }
+  }
+}
