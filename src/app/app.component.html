@@ -1,10 +1,20 @@
-<nav>
+<nav [ngClass]="{ 'nav-open': showNav }">
+  <button
+    class="toggleNav"
+    [ngClass]="{ whenNavClosed: !showNav }"
+    (click)="toggleNav()"
+  >
+    <i class="fas fa-bars"></i>
+  </button>
   <ul>
     <li><a routerLink="/comp1">comp1</a></li>
     <li><a routerLink="/comp2">comp2</a></li>
-    <li><a routerLink="/parentChild">parent-child</a></li>
+    <li>
+      <a routerLink="/parentChild">parent-child</a>
+    </li>
   </ul>
 </nav>
+
 <div class="cntr">
   <router-outlet></router-outlet>
 </div>

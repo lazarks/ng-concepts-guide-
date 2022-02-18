@@ -1,10 +1,47 @@
+@import url("https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.9.0/css/all.min.css");
+
 nav {
   background-color: blueviolet;
+  width: 250px;
+  height: 100%;
+  position: fixed;
+  top: 0;
+  left: -250px;
+
+  transition: left 0.3s;
+  &.nav-open {
+    left: 0;
+  }
+
+  .toggleNav {
+    background-color: transparent;
+    border: none;
+    cursor: pointer;
+
+    position: absolute;
+    top: 30px;
+    right: 30px;
+    transition: right 0.3s, transform 0.2s;
+
+    i {
+      font-size: 24px;
+      color: #fff;
+    }
+
+    &:hover {
+      transform: scale(1.2);
+    }
+
+    &.whenNavClosed {
+      right: -40px;
+    }
+  }
 
   ul {
     width: 80%;
-    margin: 0 auto;
+    margin: 100px auto;
     display: flex;
+    flex-direction: column;
     justify-content: flex-start;
 
     li {
@@ -23,6 +60,25 @@ nav {
         }
       }
     }
+  }
+}
+
+.toggleNavButton {
+  background-color: transparent;
+  border: none;
+  position: fixed;
+  top: 20px;
+  left: 210px;
+  cursor: pointer;
+
+  transition: transform 0.2s;
+  &:hover {
+    transform: scale(1.2);
+  }
+
+  i {
+    font-size: 24px;
+    color: #fff;
   }
 }
 
