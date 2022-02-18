@@ -7,6 +7,7 @@ import { Component, OnInit } from '@angular/core';
 })
 export class ParentChildComponent implements OnInit {
   users: string[];
+  userExistsMessage: boolean = false;
 
   constructor() {
     this.users = ['user1', 'user2', 'user3'];
@@ -15,7 +16,13 @@ export class ParentChildComponent implements OnInit {
   ngOnInit(): void {}
 
   addUser(event: string) {
+    if (this.users.includes(event)) {
+      this.userExistsMessage = true;
+      return;
+    }
+
     this.users.push(event);
+    this.userExistsMessage = false;
   }
 
   removeUser(event: string) {

@@ -1,4 +1,5 @@
 <app-add-user (createdUser)="addUser($event)"></app-add-user>
+<div class="err" *ngIf="userExistsMessage">Uneti username vec postoji!!!</div>
 
 <app-user
   *ngFor="let user of users"

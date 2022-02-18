@@ -1,2 +1,7 @@
-<input type="text" placeholder="create user" [(ngModel)]="inputUsername" />
+<input
+  type="text"
+  placeholder="create user"
+  [(ngModel)]="inputUsername"
+  (keyup.enter)="onUserCreated()"
+/>
 <button (click)="onUserCreated()">Create User</button>
