@@ -7,14 +7,16 @@
     <i class="fas fa-bars"></i>
   </button>
   <ul>
-    <li><a routerLink="/comp1">comp1</a></li>
-    <li><a routerLink="/comp2">comp2</a></li>
-    <li>
+    <li [routerLinkActive]="['active']"><a routerLink="/comp1">comp1</a></li>
+    <li [routerLinkActive]="['active']"><a routerLink="/comp2">comp2</a></li>
+    <li [routerLinkActive]="['active']">
       <a routerLink="/parentChild">parent-child</a>
     </li>
   </ul>
 </nav>
 
-<div class="cntr">
-  <router-outlet></router-outlet>
+<div class="overlay">
+  <div class="cntr">
+    <router-outlet></router-outlet>
+  </div>
 </div>
