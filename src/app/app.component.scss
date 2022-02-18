@@ -45,7 +45,7 @@ nav {
 
     li {
       list-style: none;
-      padding: 1rem 2rem;
+      transition: 0.3s ease-in;
 
       &.active {
         // background-color: rgb(159, 89, 224);
@@ -56,6 +56,8 @@ nav {
       }
 
       a {
+        padding: 1rem 2rem;
+        width: 100%;
         text-decoration: none;
         display: inline-block;
         color: #fff;
@@ -63,7 +65,8 @@ nav {
         font-weight: 600;
 
         &:hover {
-          color: #ccc;
+          background-color: #ffffffb0;
+          color: blueviolet;
         }
       }
     }
