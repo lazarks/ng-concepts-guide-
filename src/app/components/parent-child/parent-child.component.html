@@ -1,0 +1,7 @@
+<app-add-user (createdUser)="addUser($event)"></app-add-user>
+
+<app-user
+  *ngFor="let user of users"
+  [userName]="user"
+  (removedUser)="removeUser($event)"
+></app-user>
