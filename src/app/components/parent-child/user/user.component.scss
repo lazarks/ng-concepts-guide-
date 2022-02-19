@@ -7,19 +7,4 @@ div {
 
   display: flex;
   justify-content: space-between;
-
-  button {
-    background-color: #fff;
-    color: blueviolet;
-    font-size: 1.2rem;
-    font-weight: bolder;
-    width: 25px;
-    border: none;
-    border-radius: 6px;
-    transition: 0.3s;
-
-    &:hover {
-      transform: scale(1.1);
-    }
-  }
 }

@@ -7,13 +7,8 @@ import { Component, EventEmitter, Input, OnInit, Output } from '@angular/core';
 })
 export class UserComponent implements OnInit {
   @Input('userName') username!: string;
-  @Output() removedUser = new EventEmitter<string>();
 
   constructor() {}
 
   ngOnInit(): void {}
-
-  onUserRemoved() {
-    this.removedUser.emit(this.username);
-  }
 }
