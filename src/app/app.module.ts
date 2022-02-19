@@ -9,9 +9,10 @@ import { Comp2Component } from './components/comp2/comp2.component';
 import { ParentChildComponent } from './components/parent-child/parent-child.component';
 import { UserComponent } from './components/parent-child/user/user.component';
 import { AddUserComponent } from './components/parent-child/add-user/add-user.component';
+import { RemoveUserComponent } from './components/parent-child/remove-user/remove-user.component';
 
 @NgModule({
-  declarations: [AppComponent, Comp1Component, Comp2Component, ParentChildComponent, UserComponent, AddUserComponent],
+  declarations: [AppComponent, Comp1Component, Comp2Component, ParentChildComponent, UserComponent, AddUserComponent, RemoveUserComponent],
   imports: [BrowserModule, AppRoutingModule, FormsModule, ReactiveFormsModule],
   providers: [],
   bootstrap: [AppComponent],

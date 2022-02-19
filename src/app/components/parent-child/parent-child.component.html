@@ -2,5 +2,5 @@
 <div class="err" *ngIf="userExistsMessage">Uneti username vec postoji!!!</div>
 
 <app-user *ngFor="let user of users" [userName]="user">
-  <button class="rmvBtn" (click)="removeUser(user)">x</button>
+  <app-remove-user (removedUser)="removeUser(user)"></app-remove-user>
 </app-user>
