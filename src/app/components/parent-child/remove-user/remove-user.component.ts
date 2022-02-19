@@ -11,7 +11,8 @@ export class RemoveUserComponent implements OnInit {
 
   ngOnInit(): void {}
 
-  onUserRemoved() {
+  onUserRemoved(event: Event) {
+    event.stopImmediatePropagation();
     this.removedUser.emit();
   }
 }

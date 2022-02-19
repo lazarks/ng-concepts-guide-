@@ -1,1 +1,2 @@
-<button class="rmvBtn" (click)="onUserRemoved()">x</button>
+<button class="rmvBtn" (mousedown)="onUserRemoved($event)">x</button>
+<!-- mousedown insted of click because of highlight.directive host binding event propagation -->
