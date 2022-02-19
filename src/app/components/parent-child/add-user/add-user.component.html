@@ -1,7 +1,7 @@
 <input
   type="text"
   placeholder="create user"
-  [(ngModel)]="inputUsername"
-  (keyup.enter)="onUserCreated()"
+  #inputUsername
+  (keyup.enter)="onUserCreated(inputUsername)"
 />
-<button (click)="onUserCreated()">Create User</button>
+<button (click)="onUserCreated(inputUsername)">Create User</button>

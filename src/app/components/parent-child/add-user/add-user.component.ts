@@ -7,13 +7,12 @@ import { Component, EventEmitter, OnInit, Output } from '@angular/core';
 })
 export class AddUserComponent implements OnInit {
   @Output() createdUser = new EventEmitter<string>();
-  inputUsername: string = '';
 
   constructor() {}
 
   ngOnInit(): void {}
 
-  onUserCreated() {
-    this.createdUser.emit(this.inputUsername);
+  onUserCreated(input: HTMLInputElement) {
+    this.createdUser.emit(input.value);
   }
 }
