@@ -3,7 +3,7 @@ import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { BrowserModule } from '@angular/platform-browser';
 
 import { AppRoutingModule } from './app-routing.module';
-import { AppComponent } from './app.component';
+import { AppComponent, NavLinkDirective } from './app.component';
 import { Comp1Component } from './components/comp1/comp1.component';
 import { Comp2Component } from './components/comp2/comp2.component';
 import { ParentChildComponent } from './components/parent-child/parent-child.component';
@@ -22,6 +22,7 @@ import { HighlightDirective } from './components/parent-child/user/highlight.dir
     AddUserComponent,
     RemoveUserComponent,
     HighlightDirective,
+    NavLinkDirective,
   ],
   imports: [BrowserModule, AppRoutingModule, FormsModule, ReactiveFormsModule],
   providers: [],

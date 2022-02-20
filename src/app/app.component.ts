@@ -1,4 +1,15 @@
-import { Component } from '@angular/core';
+import { Component, Directive, ElementRef, HostListener } from '@angular/core';
+
+@Directive({
+  selector: '.nav-link',
+})
+export class NavLinkDirective {
+  constructor(private host: AppComponent, private el: ElementRef) {}
+
+  @HostListener('click') onCLick() {
+    this.host.toggleNav();
+  }
+}
 
 @Component({
   selector: 'app-root',
@@ -6,10 +17,9 @@ import { Component } from '@angular/core';
   styleUrls: ['./app.component.scss'],
 })
 export class AppComponent {
-  title = 'ng concepts';
   showNav: boolean = false;
 
-  toggleNav() {
+  toggleNav(): void {
     this.showNav = !this.showNav;
   }
 }
