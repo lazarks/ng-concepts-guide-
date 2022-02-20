@@ -14,6 +14,7 @@ import { HighlightDirective } from './components/parent-child/user/highlight.dir
 import { NestedRoutesComponent } from './components/nested-routes/nested-routes.component';
 import { Ruta1Component } from './components/nested-routes/ruta1/ruta1.component';
 import { Ruta2Component } from './components/nested-routes/ruta2/ruta2.component';
+import { PageNotFoundComponent } from './components/nested-routes/page-not-found/page-not-found.component';
 
 @NgModule({
   declarations: [
@@ -29,6 +30,7 @@ import { Ruta2Component } from './components/nested-routes/ruta2/ruta2.component
     NestedRoutesComponent,
     Ruta1Component,
     Ruta2Component,
+    PageNotFoundComponent,
   ],
   imports: [BrowserModule, AppRoutingModule, FormsModule, ReactiveFormsModule],
   providers: [],

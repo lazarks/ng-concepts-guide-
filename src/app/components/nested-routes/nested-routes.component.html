@@ -1,7 +1,12 @@
 <nav>
   <ul>
     <li [routerLinkActive]="['nActive']">
-      <a [routerLink]="['./ruta1']">ruta1</a>
+      <a
+        [routerLink]="['./ruta1', 123, 'lazar']"
+        [queryParams]="{ page: 1, search: 'helo world' }"
+        [fragment]="'load'"
+        >ruta1</a
+      >
     </li>
     <li [routerLinkActive]="['nActive']">
       <a [routerLink]="['./ruta2']">ruta2</a>
