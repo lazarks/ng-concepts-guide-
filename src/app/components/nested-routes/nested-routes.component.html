@@ -1,0 +1,13 @@
+<nav>
+  <ul>
+    <li [routerLinkActive]="['nActive']">
+      <a [routerLink]="['./ruta1']">ruta1</a>
+    </li>
+    <li [routerLinkActive]="['nActive']">
+      <a [routerLink]="['./ruta2']">ruta2</a>
+    </li>
+  </ul>
+</nav>
+<div class="outlet">
+  <router-outlet></router-outlet>
+</div>

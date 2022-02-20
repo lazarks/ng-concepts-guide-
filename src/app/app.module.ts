@@ -11,6 +11,9 @@ import { UserComponent } from './components/parent-child/user/user.component';
 import { AddUserComponent } from './components/parent-child/add-user/add-user.component';
 import { RemoveUserComponent } from './components/parent-child/remove-user/remove-user.component';
 import { HighlightDirective } from './components/parent-child/user/highlight.directive';
+import { NestedRoutesComponent } from './components/nested-routes/nested-routes.component';
+import { Ruta1Component } from './components/nested-routes/ruta1/ruta1.component';
+import { Ruta2Component } from './components/nested-routes/ruta2/ruta2.component';
 
 @NgModule({
   declarations: [
@@ -23,6 +26,9 @@ import { HighlightDirective } from './components/parent-child/user/highlight.dir
     RemoveUserComponent,
     HighlightDirective,
     NavLinkDirective,
+    NestedRoutesComponent,
+    Ruta1Component,
+    Ruta2Component,
   ],
   imports: [BrowserModule, AppRoutingModule, FormsModule, ReactiveFormsModule],
   providers: [],
