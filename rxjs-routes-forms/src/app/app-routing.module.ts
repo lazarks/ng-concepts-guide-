@@ -7,6 +7,7 @@ import { PageNotFoundComponent } from './components/nested-routes/page-not-found
 import { Ruta1Component } from './components/nested-routes/ruta1/ruta1.component';
 import { Ruta2Component } from './components/nested-routes/ruta2/ruta2.component';
 import { ParentChildComponent } from './components/parent-child/parent-child.component';
+import { TemplateFormComponent } from './components/template-form/template-form.component';
 import { AuthGuard } from './services/guards/auth.guard';
 import { DeactivateGuard } from './services/guards/deactivate.guard';
 
@@ -28,6 +29,7 @@ const routes: Routes = [
       { path: 'ruta2', component: Ruta2Component },
     ],
   },
+  { path: 'templateForm', component: TemplateFormComponent },
   { path: 'not-found', component: PageNotFoundComponent },
   { path: '**', redirectTo: 'not-found' },
 ];

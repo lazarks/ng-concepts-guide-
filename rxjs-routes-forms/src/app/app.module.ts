@@ -18,6 +18,7 @@ import { PageNotFoundComponent } from './components/nested-routes/page-not-found
 import { AuthService } from './services/auth.service';
 import { AuthGuard } from './services/guards/auth.guard';
 import { DeactivateGuard } from './services/guards/deactivate.guard';
+import { TemplateFormComponent } from './components/template-form/template-form.component';
 
 @NgModule({
   declarations: [
@@ -34,6 +35,7 @@ import { DeactivateGuard } from './services/guards/deactivate.guard';
     Ruta1Component,
     Ruta2Component,
     PageNotFoundComponent,
+    TemplateFormComponent,
   ],
   imports: [BrowserModule, AppRoutingModule, FormsModule, ReactiveFormsModule],
   providers: [AuthService, AuthGuard, DeactivateGuard],
