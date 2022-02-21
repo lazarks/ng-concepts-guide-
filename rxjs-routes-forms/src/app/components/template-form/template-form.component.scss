@@ -1,0 +1,20 @@
+form {
+  .form-group {
+    .form-control {
+      display: block;
+      width: 80%;
+      padding: 6px;
+      margin: 10px;
+      outline: none;
+      border: none;
+      border-radius: 6px;
+
+      &[type="submit"] {
+        background-color: blueviolet;
+        color: #fff;
+        padding: 9px;
+        cursor: pointer;
+      }
+    }
+  }
+}

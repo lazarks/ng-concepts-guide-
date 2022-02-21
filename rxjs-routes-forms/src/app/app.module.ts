@@ -23,18 +23,26 @@ import { TemplateFormComponent } from './components/template-form/template-form.
 @NgModule({
   declarations: [
     AppComponent,
+    NavLinkDirective,
+
+    // rxjs
     Comp1Component,
     Comp2Component,
+
+    // parent-child
     ParentChildComponent,
     UserComponent,
     AddUserComponent,
     RemoveUserComponent,
     HighlightDirective,
-    NavLinkDirective,
+
+    // nested routes
     NestedRoutesComponent,
     Ruta1Component,
     Ruta2Component,
     PageNotFoundComponent,
+
+    // forms
     TemplateFormComponent,
   ],
   imports: [BrowserModule, AppRoutingModule, FormsModule, ReactiveFormsModule],
