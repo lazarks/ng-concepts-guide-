@@ -1,12 +1,14 @@
 import { Component, OnInit } from '@angular/core';
 import { ActivatedRoute, Params } from '@angular/router';
+import { Observable } from 'rxjs';
+import { IDeactivateGuard } from 'src/app/services/guards/deactivate.guard';
 
 @Component({
   selector: 'app-ruta1',
   templateUrl: './ruta1.component.html',
   styleUrls: ['./ruta1.component.scss'],
 })
-export class Ruta1Component implements OnInit {
+export class Ruta1Component implements OnInit, IDeactivateGuard {
   id!: number;
   name!: string;
   page!: number;
@@ -23,5 +25,13 @@ export class Ruta1Component implements OnInit {
       this.page = data['page'];
       this.searchQ = data['search'];
     });
+  }
+
+  canExit() {
+    if (confirm('Are you sure you want to exit?')) {
+      return true;
+    }
+
+    return false;
   }
 }

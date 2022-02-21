@@ -15,6 +15,9 @@ import { NestedRoutesComponent } from './components/nested-routes/nested-routes.
 import { Ruta1Component } from './components/nested-routes/ruta1/ruta1.component';
 import { Ruta2Component } from './components/nested-routes/ruta2/ruta2.component';
 import { PageNotFoundComponent } from './components/nested-routes/page-not-found/page-not-found.component';
+import { AuthService } from './services/auth.service';
+import { AuthGuard } from './services/guards/auth.guard';
+import { DeactivateGuard } from './services/guards/deactivate.guard';
 
 @NgModule({
   declarations: [
@@ -33,7 +36,7 @@ import { PageNotFoundComponent } from './components/nested-routes/page-not-found
     PageNotFoundComponent,
   ],
   imports: [BrowserModule, AppRoutingModule, FormsModule, ReactiveFormsModule],
-  providers: [],
+  providers: [AuthService, AuthGuard, DeactivateGuard],
   bootstrap: [AppComponent],
 })
 export class AppModule {}

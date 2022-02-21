@@ -7,6 +7,8 @@ import { PageNotFoundComponent } from './components/nested-routes/page-not-found
 import { Ruta1Component } from './components/nested-routes/ruta1/ruta1.component';
 import { Ruta2Component } from './components/nested-routes/ruta2/ruta2.component';
 import { ParentChildComponent } from './components/parent-child/parent-child.component';
+import { AuthGuard } from './services/guards/auth.guard';
+import { DeactivateGuard } from './services/guards/deactivate.guard';
 
 const routes: Routes = [
   { path: '', redirectTo: 'comp1', pathMatch: 'full' },
@@ -17,7 +19,12 @@ const routes: Routes = [
     path: 'nestedRoutes',
     component: NestedRoutesComponent,
     children: [
-      { path: 'ruta1/:id/:name', component: Ruta1Component },
+      {
+        path: 'ruta1/:id/:name',
+        component: Ruta1Component,
+        canActivate: [AuthGuard],
+        canDeactivate: [DeactivateGuard],
+      },
       { path: 'ruta2', component: Ruta2Component },
     ],
   },

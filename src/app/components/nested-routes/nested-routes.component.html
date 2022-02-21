@@ -13,6 +13,13 @@
     </li>
   </ul>
 </nav>
+
+<button (click)="login()">LogIn</button>
+<button (click)="logout()">LogOut</button>
+
 <div class="outlet">
+  nested routes works!
+  <p *ngIf="isUserLoggedIn()">User is logged In</p>
+  <p *ngIf="!isUserLoggedIn()">User isn't logged In</p>
   <router-outlet></router-outlet>
 </div>
