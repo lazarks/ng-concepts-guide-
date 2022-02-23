@@ -1,0 +1,48 @@
+form {
+  .form-group {
+    .form-control {
+      display: block;
+
+      padding: 6px;
+      margin: 10px 0;
+      outline: none;
+      border: none;
+      border-radius: 6px;
+
+      &.ng-invalid.ng-touched {
+        // border: 2px solid rgb(158, 90, 221);
+        box-shadow: 0 0 5px 5px blueviolet;
+      }
+    }
+
+    .errorMsg {
+      display: inline-block;
+      margin: 0 0 10px;
+      color: blueviolet;
+    }
+  }
+
+  .flex-wrapper {
+    display: flex;
+    gap: 10px;
+    justify-content: center;
+  }
+  .btn-wrapper {
+    margin: 10px 0;
+    button {
+      background-color: rgba(137, 43, 226, 0.842);
+
+      color: #fff;
+      padding: 9px;
+      margin-right: 10px;
+      border: none;
+      border-radius: 6px;
+
+      cursor: pointer;
+
+      &:hover {
+        background-color: blueviolet;
+      }
+    }
+  }
+}
