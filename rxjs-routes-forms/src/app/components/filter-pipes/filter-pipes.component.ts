@@ -6,6 +6,12 @@ import { Component, OnInit } from '@angular/core';
   styleUrls: ['./filter-pipes.component.scss'],
 })
 export class FilterPipesComponent implements OnInit {
+  temp: string = '?';
+  status = new Promise((resolve, reject) => {
+    setTimeout(() => {
+      resolve('data recived or smt');
+    }, 3000);
+  });
   filterString: string = '';
 
   users = [

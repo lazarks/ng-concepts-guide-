@@ -1,5 +1,9 @@
 <div class="container">
   <div>
+    <div>async data: {{ status }}</div>
+    <div>async data: "{{ status | async }}"</div>
+  </div>
+  <div>
     <div class="s-bar">
       <input type="text" placeholder="search.." [(ngModel)]="filterString" />
     </div>
