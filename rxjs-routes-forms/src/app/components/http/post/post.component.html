@@ -1,0 +1,38 @@
+<div class="container">
+  <form [formGroup]="postForm" (ngSubmit)="onPostCreated()">
+    <div class="form-group">
+      <label>Title</label>
+      <input
+        type="text"
+        class="form-control"
+        formControlName="title"
+        placeholder="Enter title.."
+      />
+      <div
+        class="err-msg"
+        *ngIf="!postForm.get('title')!.valid && postForm.get('title')!.touched"
+      >
+        Title is required..
+      </div>
+    </div>
+    <div class="form-group">
+      <label>Content</label>
+      <textarea
+        class="form-control"
+        formControlName="content"
+        placeholder="Enter content.."
+      ></textarea>
+      <div
+        class="err-msg"
+        *ngIf="
+          !postForm.get('content')!.valid && postForm.get('content')!.touched
+        "
+      >
+        Content is required..
+      </div>
+    </div>
+    <div class="form-group">
+      <button type="submit">Add Post</button>
+    </div>
+  </form>
+</div>

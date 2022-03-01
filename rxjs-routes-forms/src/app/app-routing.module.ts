@@ -3,6 +3,7 @@ import { RouterModule, Routes } from '@angular/router';
 import { Comp1Component } from './components/comp1/comp1.component';
 import { Comp2Component } from './components/comp2/comp2.component';
 import { FilterPipesComponent } from './components/filter-pipes/filter-pipes.component';
+import { HttpComponent } from './components/http/http.component';
 import { NestedRoutesComponent } from './components/nested-routes/nested-routes.component';
 import { PageNotFoundComponent } from './components/nested-routes/page-not-found/page-not-found.component';
 import { Ruta1Component } from './components/nested-routes/ruta1/ruta1.component';
@@ -34,6 +35,7 @@ const routes: Routes = [
   { path: 'templateForm', component: TemplateFormComponent },
   { path: 'reactiveForms', component: ReactiveFormsComponent },
   { path: 'filterPipes', component: FilterPipesComponent },
+  { path: 'http', component: HttpComponent },
 
   { path: 'not-found', component: PageNotFoundComponent },
   { path: '**', redirectTo: 'not-found' },

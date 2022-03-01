@@ -1,0 +1,44 @@
+.container {
+  min-width: 250px;
+
+  .form-group {
+    padding: 10px 20px;
+    & > * {
+      display: block;
+      width: 100%;
+    }
+
+    label {
+      margin: 0 0 4px;
+    }
+
+    .form-control {
+      outline: none;
+      padding: 6px;
+      border: none;
+      border-radius: 6px;
+      background-color: #ddd;
+      resize: none;
+    }
+
+    button {
+      background-color: blueviolet;
+      color: #fff;
+      padding: 9px;
+      outline: none;
+      border: none;
+      border-radius: 6px;
+      cursor: pointer;
+
+      &:hover {
+        opacity: 0.8;
+      }
+    }
+
+    .err-msg {
+      display: inline-block;
+      margin-top: 3px;
+      color: red;
+    }
+  }
+}
