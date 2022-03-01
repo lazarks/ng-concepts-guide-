@@ -8,16 +8,20 @@ import { Component, OnInit } from '@angular/core';
 export class FilterPipesComponent implements OnInit {
   users = [
     {
-      name: 'Name1',
+      name: 'Name',
       joinDate: new Date(15, 2, 2022),
     },
     {
-      name: 'Name2',
+      name: 'Name1',
       joinDate: new Date(20, 2, 2022),
     },
     {
-      name: 'Name3',
+      name: 'Name12',
       joinDate: new Date(25, 2, 2022),
+    },
+    {
+      name: 'Name123',
+      joinDate: new Date(1, 3, 2022),
     },
   ];
 
