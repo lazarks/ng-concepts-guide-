@@ -2,6 +2,7 @@ import { HttpClient } from '@angular/common/http';
 import { Component, OnInit } from '@angular/core';
 import { FormControl, FormGroup, Validators } from '@angular/forms';
 import { map } from 'rxjs';
+import { Post } from './post.model';
 
 @Component({
   selector: 'app-post',
@@ -10,7 +11,7 @@ import { map } from 'rxjs';
 })
 export class PostComponent implements OnInit {
   postForm!: FormGroup;
-  posts: any;
+  posts!: Post[];
 
   constructor(private http: HttpClient) {}
 
@@ -25,20 +26,19 @@ export class PostComponent implements OnInit {
 
   getPosts() {
     this.http
-      .get<any>(
+      .get<{ [key: string]: Post }>(
         'https://ng-concepts-default-rtdb.europe-west1.firebasedatabase.app/posts.json'
       )
       .pipe(
         map((response) => {
-          let posts = [];
+          let posts: Post[] = [];
           for (let key in response) {
             posts.push({ ...response[key], key });
           }
           return posts;
         })
       )
-
-      .subscribe((response) => {
+      .subscribe((response: Post[]) => {
         this.posts = response;
       });
   }
@@ -46,7 +46,7 @@ export class PostComponent implements OnInit {
   onPostCreated() {
     let postData = this.postForm.value;
     this.http
-      .post(
+      .post<{ name: string }>(
         'https://ng-concepts-default-rtdb.europe-west1.firebasedatabase.app/posts.json',
         postData
       )
