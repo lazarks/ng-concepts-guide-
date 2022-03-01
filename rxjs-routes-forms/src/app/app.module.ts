@@ -1,9 +1,10 @@
 import { NgModule } from '@angular/core';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { BrowserModule } from '@angular/platform-browser';
-
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent, NavLinkDirective } from './app.component';
+import { HttpClient, HttpClientModule } from '@angular/common/http';
+
 import { Comp1Component } from './components/comp1/comp1.component';
 import { Comp2Component } from './components/comp2/comp2.component';
 import { ParentChildComponent } from './components/parent-child/parent-child.component';
@@ -61,7 +62,13 @@ import { PostComponent } from './components/http/post/post.component';
     HttpComponent,
     PostComponent,
   ],
-  imports: [BrowserModule, AppRoutingModule, FormsModule, ReactiveFormsModule],
+  imports: [
+    BrowserModule,
+    AppRoutingModule,
+    FormsModule,
+    ReactiveFormsModule,
+    HttpClientModule,
+  ],
   providers: [AuthService, AuthGuard, DeactivateGuard],
   bootstrap: [AppComponent],
 })

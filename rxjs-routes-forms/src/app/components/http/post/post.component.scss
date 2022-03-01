@@ -38,7 +38,24 @@
     .err-msg {
       display: inline-block;
       margin-top: 3px;
-      color: red;
+      color: #999;
+    }
+  }
+
+  .showcase {
+    border-top: 1px solid blueviolet;
+    padding-top: 10px;
+
+    table {
+      width: 100%;
+      border-collapse: collapse;
+
+      td,
+      th {
+        border: 2px solid blueviolet;
+
+        padding: 5px;
+      }
     }
   }
 }
