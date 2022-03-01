@@ -6,22 +6,28 @@ import { Component, OnInit } from '@angular/core';
   styleUrls: ['./filter-pipes.component.scss'],
 })
 export class FilterPipesComponent implements OnInit {
+  filterString: string = '';
+
   users = [
     {
       name: 'Name',
-      joinDate: new Date(15, 2, 2022),
+      joinDate: new Date(2022, 1, 15),
+    },
+    {
+      name: 'Name',
+      joinDate: new Date(2022, 1, 16),
     },
     {
       name: 'Name1',
-      joinDate: new Date(20, 2, 2022),
+      joinDate: new Date(2022, 1, 20),
     },
     {
       name: 'Name12',
-      joinDate: new Date(25, 2, 2022),
+      joinDate: new Date(2022, 1, 25),
     },
     {
       name: 'Name123',
-      joinDate: new Date(1, 3, 2022),
+      joinDate: new Date(2022, 2, 1),
     },
   ];
 

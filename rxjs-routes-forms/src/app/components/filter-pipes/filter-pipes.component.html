@@ -1,5 +1,10 @@
 <div class="container">
-  <div *ngFor="let user of users">
+  <div>
+    <div class="s-bar">
+      <input type="text" placeholder="search.." [(ngModel)]="filterString" />
+    </div>
+  </div>
+  <div *ngFor="let user of users | filter: filterString">
     <div>Name: {{ user.name | shorten: 6 }}</div>
     <div>Join date: {{ user.joinDate | date: "fullDate" | lowercase }}</div>
   </div>
