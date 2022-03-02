@@ -31,4 +31,14 @@ export class PostService {
       postData
     );
   }
+
+  clearPosts() {
+    this.http
+      .delete(
+        'https://ng-concepts-default-rtdb.europe-west1.firebasedatabase.app/posts.json'
+      )
+      .subscribe((response) => {
+        console.log(response);
+      });
+  }
 }

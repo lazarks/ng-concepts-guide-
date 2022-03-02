@@ -34,5 +34,10 @@ export class PostComponent implements OnInit {
     this.postService.createPost(postData).subscribe((response) => {
       this.getPosts();
     });
+    this.postForm.reset();
+  }
+
+  onClearPosts() {
+    this.postService.clearPosts();
   }
 }

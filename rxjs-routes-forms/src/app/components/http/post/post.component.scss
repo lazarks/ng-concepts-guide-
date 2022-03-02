@@ -21,7 +21,21 @@
       resize: none;
     }
 
+    .err-msg {
+      display: inline-block;
+      margin-top: 3px;
+      color: #999;
+    }
+  }
+
+  .btn-container {
+    margin: 6px 0 10px;
+    display: flex;
+    justify-content: center;
+    gap: 20px;
+
     button {
+      display: inline-block;
       background-color: blueviolet;
       color: #fff;
       padding: 9px;
@@ -33,12 +47,6 @@
       &:hover {
         opacity: 0.8;
       }
-    }
-
-    .err-msg {
-      display: inline-block;
-      margin-top: 3px;
-      color: #999;
     }
   }
 
