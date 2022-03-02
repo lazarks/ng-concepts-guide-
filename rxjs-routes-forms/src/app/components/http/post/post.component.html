@@ -37,7 +37,7 @@
     </div>
   </form>
   <div class="showcase">
-    <table>
+    <table *ngIf="!errMsg">
       <thead>
         <th>Title</th>
         <th>Content</th>
@@ -49,5 +49,6 @@
         </tr>
       </tbody>
     </table>
+    <div *ngIf="errMsg">{{ errMsg }}</div>
   </div>
 </div>

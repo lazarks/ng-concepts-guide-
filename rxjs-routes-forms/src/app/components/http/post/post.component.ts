@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { FormControl, FormGroup, Validators } from '@angular/forms';
+import { ConnectableObservable } from 'rxjs';
 import { PostService } from 'src/app/services/post.service';
 import { Post } from './post.model';
 
@@ -11,6 +12,7 @@ import { Post } from './post.model';
 export class PostComponent implements OnInit {
   postForm!: FormGroup;
   posts!: Post[];
+  errMsg = null;
 
   constructor(private postService: PostService) {}
 
@@ -24,9 +26,14 @@ export class PostComponent implements OnInit {
   }
 
   getPosts() {
-    this.postService.fetchPosts().subscribe((response: Post[]) => {
-      this.posts = response;
-    });
+    this.postService.fetchPosts().subscribe(
+      (response) => {
+        this.posts = response;
+      },
+      (error) => {
+        this.errMsg = error.message;
+      }
+    );
   }
 
   onPostCreated() {
