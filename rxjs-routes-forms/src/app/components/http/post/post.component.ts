@@ -1,7 +1,6 @@
-import { HttpClient } from '@angular/common/http';
 import { Component, OnInit } from '@angular/core';
 import { FormControl, FormGroup, Validators } from '@angular/forms';
-import { map } from 'rxjs';
+import { PostService } from 'src/app/services/post.service';
 import { Post } from './post.model';
 
 @Component({
@@ -13,7 +12,7 @@ export class PostComponent implements OnInit {
   postForm!: FormGroup;
   posts!: Post[];
 
-  constructor(private http: HttpClient) {}
+  constructor(private postService: PostService) {}
 
   ngOnInit(): void {
     this.postForm = new FormGroup({
@@ -25,35 +24,15 @@ export class PostComponent implements OnInit {
   }
 
   getPosts() {
-    this.http
-      .get<{ [key: string]: Post }>(
-        'https://ng-concepts-default-rtdb.europe-west1.firebasedatabase.app/posts.json'
-      )
-      .pipe(
-        map((response) => {
-          let posts: Post[] = [];
-          for (let key in response) {
-            posts.push({ ...response[key], key });
-          }
-          return posts;
-        })
-      )
-      .subscribe((response: Post[]) => {
-        this.posts = response;
-      });
+    this.postService.fetchPosts().subscribe((response: Post[]) => {
+      this.posts = response;
+    });
   }
 
   onPostCreated() {
-    let postData = this.postForm.value;
-    this.http
-      .post<{ name: string }>(
-        'https://ng-concepts-default-rtdb.europe-west1.firebasedatabase.app/posts.json',
-        postData
-      )
-      .subscribe((response) => {
-        this.getPosts();
-      });
-    // console.log(postData);
-    this.postForm.reset();
+    let postData: Post = this.postForm.value;
+    this.postService.createPost(postData).subscribe((response) => {
+      this.getPosts();
+    });
   }
 }
