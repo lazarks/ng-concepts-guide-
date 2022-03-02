@@ -1,6 +1,11 @@
-import { HttpClient, HttpHeaders, HttpParams } from '@angular/common/http';
+import {
+  HttpClient,
+  HttpEventType,
+  HttpHeaders,
+  HttpParams,
+} from '@angular/common/http';
 import { Injectable } from '@angular/core';
-import { map } from 'rxjs';
+import { map, tap } from 'rxjs';
 import { Post } from '../components/http/post/post.model';
 
 @Injectable({
@@ -43,6 +48,7 @@ export class PostService {
         headers: new HttpHeaders({
           'custom-header': 'post lzr',
         }),
+        observe: 'body',
       }
     );
   }
@@ -50,7 +56,21 @@ export class PostService {
   clearPosts() {
     this.http
       .delete(
-        'https://ng-concepts-default-rtdb.europe-west1.firebasedatabase.app/posts.json'
+        'https://ng-concepts-default-rtdb.europe-west1.firebasedatabase.app/posts.json',
+        {
+          observe: 'events',
+          responseType: 'text',
+        }
+      )
+      .pipe(
+        tap((response) => {
+          if (response.type === HttpEventType.Sent) {
+            console.log('request sent');
+          }
+          if (response.type === HttpEventType.Response) {
+            console.log(response);
+          }
+        })
       )
       .subscribe((response) => {
         console.log(response);

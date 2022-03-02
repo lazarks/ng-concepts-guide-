@@ -39,6 +39,7 @@ export class PostComponent implements OnInit {
   onPostCreated() {
     let postData: Post = this.postForm.value;
     this.postService.createPost(postData).subscribe((response) => {
+      console.log(response);
       this.getPosts();
     });
     this.postForm.reset();
