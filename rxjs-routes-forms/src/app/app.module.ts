@@ -3,7 +3,11 @@ import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { BrowserModule } from '@angular/platform-browser';
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent, NavLinkDirective } from './app.component';
-import { HttpClient, HttpClientModule } from '@angular/common/http';
+import {
+  HttpClient,
+  HttpClientModule,
+  HTTP_INTERCEPTORS,
+} from '@angular/common/http';
 
 import { Comp1Component } from './components/comp1/comp1.component';
 import { Comp2Component } from './components/comp2/comp2.component';
@@ -26,9 +30,11 @@ import { ShortenPipe } from './components/filter-pipes/pipes/shorten.pipe';
 import { FilterPipe } from './components/filter-pipes/pipes/filter.pipe';
 import { HttpComponent } from './components/http/http.component';
 import { PostComponent } from './components/http/post/post.component';
+import { AuthInterceptor } from './services/interceptors/auth.interceptor';
 
 @NgModule({
   declarations: [
+    // app
     AppComponent,
     NavLinkDirective,
 
@@ -69,7 +75,12 @@ import { PostComponent } from './components/http/post/post.component';
     ReactiveFormsModule,
     HttpClientModule,
   ],
-  providers: [AuthService, AuthGuard, DeactivateGuard],
+  providers: [
+    AuthService,
+    AuthGuard,
+    DeactivateGuard,
+    { provide: HTTP_INTERCEPTORS, useClass: AuthInterceptor, multi: true },
+  ],
   bootstrap: [AppComponent],
 })
 export class AppModule {}
