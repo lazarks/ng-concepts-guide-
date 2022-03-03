@@ -1,14 +1,40 @@
-<form>
+<form #authForm="ngForm" (ngSubmit)="onFormSubmit(authForm)">
   <h2>Log In</h2>
   <div class="form-group">
-    <input type="text" placeholder="Enter your email.." />
+    <input
+      type="text"
+      name="email"
+      placeholder="Enter your email.."
+      #email="ngModel"
+      ngModel
+      required
+      email
+    />
+    <div class="err-msg" *ngIf="email.touched && !email.valid">
+      <div *ngIf="email.errors!['required']">Email is required!</div>
+      <div *ngIf="email.errors!['email']">Invalid email!</div>
+    </div>
   </div>
   <div class="form-group">
-    <input type="passwrd" placeholder="Enter your password.." />
+    <input
+      type="passwrd"
+      name="password"
+      placeholder="Enter your password.."
+      #password="ngModel"
+      ngModel
+      required
+      minlength="6"
+    />
+    <div class="err-msg" *ngIf="password.touched && !password.valid">
+      <div *ngIf="password.errors!['required']">Password is required!</div>
+      <div *ngIf="password.errors!['minlength']">
+        Password must have atleast 6 characters!
+      </div>
+    </div>
   </div>
 
   <div class="btn-container form-group">
-    <button type="submit" id="login">
+    <button type="submit" id="login" [disabled]="!authForm.valid">
       {{ isLoginMode ? "Login" : "Sign Up" }}
     </button>
     <button type="button" id="register" (click)="onSwitchMode()">
