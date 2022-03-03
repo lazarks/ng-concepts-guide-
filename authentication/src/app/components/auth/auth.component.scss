@@ -1,0 +1,53 @@
+form {
+  min-width: 350px;
+
+  h2 {
+    text-align: center;
+  }
+
+  .form-group {
+    margin: 20px;
+
+    input {
+      padding: 10px;
+      width: 100%;
+      outline: none;
+      border: none;
+      border-radius: 3px;
+    }
+
+    &.btn-container {
+      display: flex;
+      gap: 8px;
+
+      button {
+        background-color: rebeccapurple;
+        color: #fff;
+
+        padding: 10px;
+        width: 100%;
+        outline: none;
+        border: none;
+
+        cursor: pointer;
+        transition: 0.2s ease-out;
+
+        &:hover {
+          opacity: 0.8;
+        }
+
+        &#login {
+          flex: 2.5;
+          border-top-left-radius: 20px;
+          border-bottom-left-radius: 20px;
+        }
+
+        &#register {
+          flex: 1;
+          border-top-right-radius: 20px;
+          border-bottom-right-radius: 20px;
+        }
+      }
+    }
+  }
+}
