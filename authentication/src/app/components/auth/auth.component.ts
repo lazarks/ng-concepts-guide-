@@ -9,9 +9,13 @@ import { AuthService } from 'src/app/services/auth.service';
 })
 export class AuthComponent implements OnInit {
   isLoginMode: boolean;
+  isLoading: boolean;
+  error: string;
 
   constructor(private authService: AuthService) {
     this.isLoginMode = true;
+    this.isLoading = false;
+    this.error = '';
   }
 
   ngOnInit(): void {}
@@ -24,16 +28,24 @@ export class AuthComponent implements OnInit {
     if (!authForm.valid) {
       return;
     }
+
+    this.isLoading = true;
+
     if (this.isLoginMode) {
       // login req
     } else {
+      // signUp
       this.authService
         .signUp(authForm.value.email, authForm.value.password)
         .subscribe(
           (response) => {
             console.log(response);
+            this.isLoading = false;
           },
-          (error) => console.log(error)
+          (errorMsg) => {
+            this.error = errorMsg;
+            this.isLoading = false;
+          }
         );
     }
   }

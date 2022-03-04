@@ -1,4 +1,4 @@
-<form #authForm="ngForm" (ngSubmit)="onFormSubmit(authForm)">
+<form #authForm="ngForm" (ngSubmit)="onFormSubmit(authForm)" *ngIf="!isLoading">
   <h2>Log In</h2>
   <div class="form-group">
     <input
@@ -42,3 +42,7 @@
     </button>
   </div>
 </form>
+<div class="utils" *ngIf="error">{{ error }}</div>
+<div class="utils" *ngIf="isLoading">
+  <app-loading-spinner></app-loading-spinner>
+</div>
