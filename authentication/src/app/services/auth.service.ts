@@ -19,12 +19,48 @@ export interface AuthResponseData {
 })
 export class AuthService {
   userSub = new BehaviorSubject<User>(null!);
+  clearTimeout: any;
 
   constructor(private http: HttpClient, private router: Router) {}
 
   logout() {
     this.userSub.next(null!);
     this.router.navigate(['/auth']);
+    localStorage.removeItem('userData');
+
+    if (this.clearTimeout) {
+      clearTimeout(this.clearTimeout);
+    }
+  }
+
+  autoLogout(expirationDate: number) {
+    setTimeout(() => {
+      this.logout();
+    }, expirationDate);
+  }
+
+  autoLogin() {
+    let userData: {
+      email: string;
+      _token: string;
+      expirationDate: string;
+      localId: string;
+    } = JSON.parse(localStorage.getItem('userData')!);
+    if (!userData) return;
+
+    let user = new User(
+      userData.email,
+      userData.localId,
+      userData._token,
+      new Date(userData.expirationDate)
+    );
+    if (user.token) {
+      this.userSub.next(user);
+    }
+
+    let date = new Date().getTime();
+    let expirationDate = new Date(userData.expirationDate).getTime();
+    this.autoLogout(expirationDate);
   }
 
   login(email: string, password: string) {
@@ -59,26 +95,7 @@ export class AuthService {
 
     this.userSub.next(user);
     localStorage.setItem('userData', JSON.stringify(user));
-  }
-
-  autoLogin() {
-    let userData: {
-      email: string;
-      _token: string;
-      expirationDate: string;
-      localId: string;
-    } = JSON.parse(localStorage.getItem('userData')!);
-    if (!userData) return;
-
-    let user = new User(
-      userData.email,
-      userData.localId,
-      userData._token,
-      new Date(userData.expirationDate)
-    );
-    if (user.token) {
-      this.userSub.next(user);
-    }
+    this.autoLogout(+response.expiresIn * 1000);
   }
 
   getErrorHandler(errorRes: HttpErrorResponse) {
