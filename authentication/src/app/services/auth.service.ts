@@ -1,12 +1,14 @@
 import { HttpClient, HttpErrorResponse } from '@angular/common/http';
 import { Injectable } from '@angular/core';
-import { catchError, throwError } from 'rxjs';
+import { catchError, tap, throwError } from 'rxjs';
 import { environment as env } from 'src/environments/environment';
+import { User } from '../components/shared/user.model';
 
 export interface AuthResponseData {
-  id: string;
+  idToken: string;
   email: string;
   refreshToken: string;
+  expiresIn: string;
   localId: string;
   registered?: boolean;
 }
@@ -23,7 +25,7 @@ export class AuthService {
         `${env.API_URL}:signInWithPassword?key=${env.API_KEY}`,
         { email, password, returnSecureToken: true }
       )
-      .pipe(catchError(this.getErrorHandler));
+      .pipe(catchError(this.getErrorHandler), tap(this.handleUser));
   }
 
   signUp(email: string, password: string) {
@@ -33,7 +35,19 @@ export class AuthService {
         password,
         returnSecureToken: true,
       })
-      .pipe(catchError(this.getErrorHandler));
+      .pipe(catchError(this.getErrorHandler), tap(this.handleUser));
+  }
+
+  private handleUser(response: AuthResponseData) {
+    let expireDate = new Date(
+      new Date().getTime() + +response.expiresIn * 1000
+    );
+    let user = new User(
+      response.email,
+      response.localId,
+      response.idToken,
+      expireDate
+    );
   }
 
   getErrorHandler(errorRes: HttpErrorResponse) {
