@@ -15,7 +15,7 @@
         <a routerLink="/auth">Login</a>
       </li>
       <li *ngIf="isAuthenticated">
-        <a href="#" (click)="logout()">Logout</a>
+        <a href="#" (click)="onLogout($event)">Logout</a>
       </li>
     </section>
   </ul>

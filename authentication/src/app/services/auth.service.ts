@@ -1,5 +1,6 @@
 import { HttpClient, HttpErrorResponse } from '@angular/common/http';
 import { Injectable } from '@angular/core';
+import { Router } from '@angular/router';
 import { BehaviorSubject, catchError, Subject, tap, throwError } from 'rxjs';
 import { environment as env } from 'src/environments/environment';
 import { User } from '../components/shared/user.model';
@@ -19,7 +20,12 @@ export interface AuthResponseData {
 export class AuthService {
   userSub = new BehaviorSubject<User>(null!);
 
-  constructor(private http: HttpClient) {}
+  constructor(private http: HttpClient, private router: Router) {}
+
+  logout() {
+    this.userSub.next(null!);
+    this.router.navigate(['/auth']);
+  }
 
   login(email: string, password: string) {
     return this.http
@@ -52,6 +58,27 @@ export class AuthService {
     );
 
     this.userSub.next(user);
+    localStorage.setItem('userData', JSON.stringify(user));
+  }
+
+  autoLogin() {
+    let userData: {
+      email: string;
+      _token: string;
+      expirationDate: string;
+      localId: string;
+    } = JSON.parse(localStorage.getItem('userData')!);
+    if (!userData) return;
+
+    let user = new User(
+      userData.email,
+      userData.localId,
+      userData._token,
+      new Date(userData.expirationDate)
+    );
+    if (user.token) {
+      this.userSub.next(user);
+    }
   }
 
   getErrorHandler(errorRes: HttpErrorResponse) {

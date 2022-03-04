@@ -16,7 +16,8 @@ export class NavigationComponent implements OnInit {
     });
   }
 
-  logout() {
-    console.log('loggout');
+  onLogout(event: Event) {
+    event.preventDefault();
+    this.authService.logout();
   }
 }
