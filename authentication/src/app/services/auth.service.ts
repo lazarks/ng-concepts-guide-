@@ -1,6 +1,6 @@
 import { HttpClient, HttpErrorResponse } from '@angular/common/http';
 import { Injectable } from '@angular/core';
-import { catchError, tap, throwError } from 'rxjs';
+import { catchError, Subject, tap, throwError } from 'rxjs';
 import { environment as env } from 'src/environments/environment';
 import { User } from '../components/shared/user.model';
 
@@ -17,6 +17,8 @@ export interface AuthResponseData {
   providedIn: 'root',
 })
 export class AuthService {
+  userSub = new Subject<User>();
+
   constructor(private http: HttpClient) {}
 
   login(email: string, password: string) {
@@ -25,7 +27,7 @@ export class AuthService {
         `${env.API_URL}:signInWithPassword?key=${env.API_KEY}`,
         { email, password, returnSecureToken: true }
       )
-      .pipe(catchError(this.getErrorHandler), tap(this.handleUser));
+      .pipe(catchError(this.getErrorHandler), tap(this.handleUser.bind(this)));
   }
 
   signUp(email: string, password: string) {
@@ -35,7 +37,7 @@ export class AuthService {
         password,
         returnSecureToken: true,
       })
-      .pipe(catchError(this.getErrorHandler), tap(this.handleUser));
+      .pipe(catchError(this.getErrorHandler), tap(this.handleUser.bind(this)));
   }
 
   private handleUser(response: AuthResponseData) {
@@ -48,6 +50,8 @@ export class AuthService {
       response.idToken,
       expireDate
     );
+
+    this.userSub.next(user);
   }
 
   getErrorHandler(errorRes: HttpErrorResponse) {

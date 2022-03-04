@@ -1,0 +1,22 @@
+<nav>
+  <ul>
+    <!-- pages -->
+    <section>
+      <li [routerLinkActive]="['active']">
+        <a routerLink="/home">Home</a>
+      </li>
+      <li [routerLinkActive]="['active']">
+        <a routerLink="/protected">Protected</a>
+      </li>
+    </section>
+    <!-- authentication -->
+    <section>
+      <li [routerLinkActive]="['active']" *ngIf="!isAuthenticated">
+        <a routerLink="/auth">Login</a>
+      </li>
+      <li *ngIf="isAuthenticated">
+        <a href="#" (click)="logout()">Logout</a>
+      </li>
+    </section>
+  </ul>
+</nav>

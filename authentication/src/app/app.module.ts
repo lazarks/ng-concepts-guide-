@@ -9,6 +9,7 @@ import { HomeComponent } from './components/home/home.component';
 import { ProtectedComponent } from './components/protected/protected.component';
 import { AuthComponent } from './components/auth/auth.component';
 import { LoadingSpinnerComponent } from './components/shared/loading-spinner/loading-spinner/loading-spinner.component';
+import { NavigationComponent } from './components/navigation/navigation.component';
 
 @NgModule({
   declarations: [
@@ -17,6 +18,7 @@ import { LoadingSpinnerComponent } from './components/shared/loading-spinner/loa
     ProtectedComponent,
     AuthComponent,
     LoadingSpinnerComponent,
+    NavigationComponent,
   ],
   imports: [
     BrowserModule,

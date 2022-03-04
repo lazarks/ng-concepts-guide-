@@ -1,24 +1,8 @@
 <div class="flex-wrapper">
   <!-- navbar -->
-  <nav>
-    <ul>
-      <!-- pages -->
-      <section>
-        <li [routerLinkActive]="['active']">
-          <a routerLink="/home">Home</a>
-        </li>
-        <li [routerLinkActive]="['active']">
-          <a routerLink="/protected">Protected</a>
-        </li>
-      </section>
-      <!-- authentication -->
-      <section>
-        <li [routerLinkActive]="['active']">
-          <a routerLink="/auth">Login</a>
-        </li>
-      </section>
-    </ul>
-  </nav>
+  <div class="navigation">
+    <app-navigation></app-navigation>
+  </div>
 
   <!-- page content -->
   <div class="content">

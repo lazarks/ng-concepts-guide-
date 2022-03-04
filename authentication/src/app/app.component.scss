@@ -4,36 +4,8 @@
   flex-direction: column;
   align-items: center;
 
-  nav {
-    background-color: rebeccapurple;
+  .navigation {
     width: 100%;
-
-    ul {
-      list-style-type: none;
-      display: flex;
-      justify-content: space-evenly;
-
-      section {
-        display: flex;
-
-        li {
-          &.active {
-            background-color: rgb(181, 102, 255);
-          }
-          a {
-            color: #f3f3f3;
-            display: inline-block;
-            text-decoration: none;
-            padding: 1rem;
-            transition: 0.2s ease-out;
-
-            &:hover {
-              background-color: rgb(181, 102, 255);
-            }
-          }
-        }
-      }
-    }
   }
 
   .content {
