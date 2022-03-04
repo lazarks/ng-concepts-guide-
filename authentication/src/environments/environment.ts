@@ -6,7 +6,7 @@ export const environment = {
   production: false,
 
   API_KEY: 'AIzaSyD0EbY02bKgTkbvCVAwMnBji4Apy-4PLJ4',
-  API_URL: 'https://identitytoolkit.googleapis.com/v1/accounts:signUp',
+  API_URL: 'https://identitytoolkit.googleapis.com/v1/accounts',
 };
 
 /*
